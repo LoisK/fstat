@@ -4,4 +4,5 @@ CREATE TABLE t_language (
     PRIMARY KEY (id)
 );
 
+INSERT INTO t_language (id, languageName) VALUES ('en', 'English');
 
