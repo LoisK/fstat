@@ -19,5 +19,22 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
           cache: 'maven'
+
+      - name: Set the incremental Docker image tag
+        run: |
+          echo "RELEASE_VERSION=${GITHUB_REF:10}" >> $GITHUB_ENV
+          env | sort
+
       - name: Build with Maven
         run: mvn -B package --file pom.xml
+         -Dquarkus.package.type=native
+         -Dquarkus.native.builder-image=quay.io/quarkus/ubi-quarkus-mandrel:22.1.0.0-Final-java17
+         -Dquarkus.docker.dockerfile-native-path=src/main/docker/Dockerfile.native-micro
+         -Dquarkus.native.container-build=true
+         -Dquarkus.container-image.group=${GITHUB_REPOSITORY_OWNER}
+         -Dquarkus.container-image.tag=${{ env.RELEASE_VERSION }}
+         -Dquarkus.container-image.username=${{ secrets.DOCKERHUB_USERNAME }}
+         -Dquarkus.container-image.password=${{ secrets.DOCKERHUB_PASSWORD }}
+         -Dquarkus.container-image.push=true
+         --info
+
