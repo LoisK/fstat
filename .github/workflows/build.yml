@@ -26,7 +26,7 @@ jobs:
           env | sort
 
       - name: Build with Maven
-        run: mvn -B package --file pom.xml -DskipTests 
+        run: mvn -B -X package --file pom.xml -DskipTests 
          -Dquarkus.package.type=native
          -Dquarkus.native.builder-image=quay.io/quarkus/ubi-quarkus-mandrel:22.3.0.1-Final-java17
          -Dquarkus.docker.dockerfile-native-path=src/main/docker/Dockerfile.native-micro
