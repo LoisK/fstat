@@ -28,7 +28,7 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
          -Dquarkus.package.type=native
-         -Dquarkus.native.builder-image=quay.io/quarkus/ubi-quarkus-mandrel:22.1.0.0-Final-java17
+         -Dquarkus.native.builder-image=quay.io/quarkus/ubi-quarkus-mandrel:22.3.0.1-Final-java17
          -Dquarkus.docker.dockerfile-native-path=src/main/docker/Dockerfile.native-micro
          -Dquarkus.native.container-build=true
          -Dquarkus.container-image.group=${{ secrets.DOCKERHUB_USERNAME }}
