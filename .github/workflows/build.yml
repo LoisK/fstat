@@ -36,4 +36,16 @@ jobs:
          -Dquarkus.container-image.username=${{ secrets.DOCKERHUB_USERNAME }}
          -Dquarkus.container-image.password=${{ secrets.DOCKERHUB_PASSWORD }}
          -Dquarkus.container-image.push=true
+         -Dquarkus.kubernetes.replicas=4
+         -Dquarkus.kubernetes-config.secrets=fstat
+         -Dquarkus.kubernetes-config.secrets.enabled=true
+         -Dquarkus.kubernetes.service-type=node-port
+         -Dquarkus.kubernetes.node-port=32319
+         -Dquarkus.kubernetes.part-of=fstat-app
+         -Dquarkus.kubernetes.version=1.0.0
+         -Dquarkus.kubernetes.name=fstat-srv
+         -Dquarkus.kubernetes.resources.requests.memory=64Mi
+         -Dquarkus.kubernetes.resources.requests.cpu=250m
+         -Dquarkus.kubernetes.resources.limits.memory=128Mi
+         -Dquarkus.kubernetes.resources.limits.cpu=500m
 
