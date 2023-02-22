@@ -31,11 +31,12 @@ jobs:
          -Dquarkus.native.builder-image=quay.io/quarkus/ubi-quarkus-mandrel:22.3.0.1-Final-java17
          -Dquarkus.docker.dockerfile-native-path=src/main/docker/Dockerfile.native-micro
          -Dquarkus.native.container-build=true
+         -Dquarkus.container-image.push=true
+         -Dquarkus.container-image.registry=registry.hub.docker.com
          -Dquarkus.container-image.group=${{ secrets.DOCKERHUB_USERNAME }}
          -Dquarkus.container-image.tag=${{ env.RELEASE_VERSION }}
          -Dquarkus.container-image.username=${{ secrets.DOCKERHUB_USERNAME }}
          -Dquarkus.container-image.password=${{ secrets.DOCKERHUB_PASSWORD }}
-         -Dquarkus.container-image.push=true
          -Dquarkus.kubernetes.replicas=4
          -Dquarkus.kubernetes-config.secrets=fstat
          -Dquarkus.kubernetes-config.secrets.enabled=true
