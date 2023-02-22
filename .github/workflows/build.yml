@@ -32,7 +32,6 @@ jobs:
          -Dquarkus.docker.dockerfile-native-path=src/main/docker/Dockerfile.native-micro
          -Dquarkus.native.container-build=true
          -Dquarkus.container-image.push=true
-         -Dquarkus.container-image.registry=registry.hub.docker.com
          -Dquarkus.container-image.name=fstats-srv
          -Dquarkus.container-image.group=${{ secrets.DOCKERHUB_USERNAME }}
          -Dquarkus.container-image.tag=latest
